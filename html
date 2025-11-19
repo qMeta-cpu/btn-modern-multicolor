@@ -1,0 +1,110 @@
+<div class="ox-glass-btn"></div>
+
+<script>
+(() => {
+  const host = document.currentScript.previousElementSibling;
+  if (!host || host.shadowRoot) return;
+
+  const shadow = host.attachShadow({ mode: 'open' });
+
+  shadow.innerHTML = `
+    <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400&display=swap" rel="stylesheet">
+
+    <style>
+      :host {
+        display: inline-block;
+      }
+
+      .button {
+        position: relative;
+        padding: 12px 40px;
+        font-size: 20px;
+        font-weight: 400;
+        color: #ffffff;
+        border-radius: 999px;
+        cursor: pointer;
+        overflow: hidden;
+        outline: none;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        font-family: "Host Grotesk", system-ui, sans-serif;
+
+        /* dégradé interne */
+        background:
+          radial-gradient(circle at 20% 30%, rgba(255, 60, 255, 0.70), transparent 60%),
+          radial-gradient(circle at 80% 50%, rgba(50, 80, 255, 0.80), transparent 60%),
+          #1a1a2e;
+
+        /* ⭐ Border ultra fin lissant (0.5px) */
+        border: 0.5px solid rgba(255,255,255,0.35);
+
+        /* Glow subtil et propre */
+        box-shadow:
+          0 0 6px rgba(255, 255, 255, 0.20),
+          0 0 18px rgba(120, 140, 255, 0.40);
+
+        backdrop-filter: blur(30px);
+        transition: none !important;
+      }
+
+      .button:hover,
+      .button:active {
+        transform: none !important;
+        box-shadow: inherit !important;
+      }
+
+      .button::before {
+        content: none !important;
+      }
+
+      .button span {
+        position: relative;
+        z-index: 10;
+        white-space: nowrap;
+        letter-spacing: 0.01em;
+      }
+
+      /* --- bulles --- */
+      .bubble-layer {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(28px);
+        opacity: 0.95;
+        z-index: 0;
+        animation-timing-function: cubic-bezier(0.45, 0.1, 0.55, 0.95);
+      }
+
+      .bubble-1 { width:260px;height:260px;background:radial-gradient(circle,#020617 15%,#000 90%);top:-40%;left:-20%;animation:move1 7s infinite; }
+      .bubble-2 { width:190px;height:190px;background:#1e90ff;top:-10%;left:30%;animation:move2 5.5s infinite; }
+      .bubble-3 { width:190px;height:190px;background:#00eaff;top:25%;left:55%;animation:move3 6.3s infinite; }
+      .bubble-4 { width:190px;height:190px;background:#b333ff;top:-5%;left:70%;animation:move4 8.5s infinite; }
+      .bubble-5 { width:190px;height:190px;background:#ff4fa8;top:45%;left:-5%;animation:move5 6.3s infinite; }
+      .bubble-6 { width:170px;height:170px;background:#66e0ff;top:55%;left:35%;animation:move6 9.3s infinite; }
+      .bubble-7 { width:170px;height:170px;background:#ffdd66;top:40%;left:70%;opacity:.8;animation:move7 10s infinite; }
+
+      @keyframes move1 { 0%{transform:translate(0,0);} 50%{transform:translate(45px,-45px);} 100%{transform:translate(0,0);} }
+      @keyframes move2 { 0%{transform:translate(0,0);} 50%{transform:translate(-40px,35px);} 100%{transform:translate(0,0);} }
+      @keyframes move3 { 0%{transform:translate(0,0);} 50%{transform:translate(40px,25px);} 100%{transform:translate(0,0);} }
+      @keyframes move4 { 0%{transform:translate(0,0);} 50%{transform:translate(-35px,-35px);} 100%{transform:translate(0,0);} }
+      @keyframes move5 { 0%{transform:translate(0,0);} 50%{transform:translate(45px,40px);} 100%{transform:translate(0,0);} }
+      @keyframes move6 { 0%{transform:translate(0,0);} 50%{transform:translate(-50px,20px);} 100%{transform:translate(0,0);} }
+      @keyframes move7 { 0%{transform:translate(0,0);} 50%{transform:translate(30px,-40px);} 100%{transform:translate(0,0);} }
+
+    </style>
+
+    <button class="button">
+      <div class="bubble-layer bubble-1"></div>
+      <div class="bubble-layer bubble-2"></div>
+      <div class="bubble-layer bubble-3"></div>
+      <div class="bubble-layer bubble-4"></div>
+      <div class="bubble-layer bubble-5"></div>
+      <div class="bubble-layer bubble-6"></div>
+      <div class="bubble-layer bubble-7"></div>
+      <span>Get Started ↗</span>
+    </button>
+  `;
+})();
+</script>
